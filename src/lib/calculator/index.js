@@ -3,6 +3,7 @@ export { default as sma } from "./sma";
 export { default as wma } from "./wma";
 export { default as tma } from "./tma";
 export { default as bollingerband } from "./bollingerband";
+export { default as bollingerBandWidth } from "./bollingerBandWidth";
 export { default as heikinAshi } from "./heikinAshi";
 export { default as kagi } from "./kagi";
 export { default as pointAndFigure } from "./pointAndFigure";
