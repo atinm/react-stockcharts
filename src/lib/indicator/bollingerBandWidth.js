@@ -2,16 +2,15 @@
 
 import { rebind, merge } from "../utils";
 
-import { bollingerBandWidth } from "../calculator";
-
 import baseIndicator from "./baseIndicator";
+import { bollingerBandWidth } from "../calculator";
 
 const ALGORITHM_TYPE = "BBWidth";
 
 export default function() {
+
 	const base = baseIndicator()
 		.type(ALGORITHM_TYPE)
-		.accessor(d => d.bollingerBandWidth);
 
 	const underlyingAlgorithm = bollingerBandWidth();
 
@@ -28,7 +27,7 @@ export default function() {
 	};
 
 	rebind(indicator, base, "id", "accessor", "stroke", "fill", "echo", "type");
-	rebind(indicator, underlyingAlgorithm, "options", "undefinedLength");
+	rebind(indicator, underlyingAlgorithm, "options");
 	rebind(indicator, mergedAlgorithm, "merge", "skipUndefined");
 
 	return indicator;
