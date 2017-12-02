@@ -55,6 +55,10 @@ export const MACD = {
 	sourcePath: "close",
 };
 
+export const Swing = {
+	sourcePath: "high/low",
+}
+
 export const FullStochasticOscillator = {
 	windowSize: 12,
 	kWindowSize: 3,
