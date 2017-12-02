@@ -69,7 +69,19 @@ OHLCSeries.defaultProps = {
 	className: "react-stockcharts-ohlc",
 	yAccessor: (d) => ({ open: d.open, high: d.high, low: d.low, close: d.close }),
 	classNames: d => isDefined(d.absoluteChange) ? (d.absoluteChange > 0 ? "up" : "down") : "firstbar",
-	stroke: d => isDefined(d.absoluteChange) ? (d.absoluteChange > 0 ? "#6BA583" : "#FF0000") : "#000000",
+	stroke: d => {
+		if (isDefined(d.absoluteChange)) {
+			if (d.absoluteChange > 0) {
+				return "#6BA583"
+			} else if (d.absoluteChange < 0) {
+				return "#FF0000"
+			} else {
+				return "#0000FF"
+			}
+		} else {
+			return "#000000"
+		}
+	},
 	clip: true,
 };
 
@@ -112,7 +124,7 @@ function getOHLCBars(props, xAccessor, yAccessor, xScale, yScale, plotData) {
 		- xScale(xAccessor(plotData[0]));
 
 	const barWidth = Math.max(1, Math.round(width / (plotData.length - 1) / 2) - 1.5);
-	const strokeWidth = Math.min(barWidth, 6);
+	const strokeWidth = Math.max(barWidth / 2, 1);
 
 	const bars = plotData
 		.filter(d => isDefined(yAccessor(d).close))
