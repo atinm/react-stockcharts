@@ -66,20 +66,22 @@ function helper(props) {
 
 	let coordinateBase, coordinate;
 	if (isDefined(displayCoordinate)) {
-		const textAnchor = "middle"; // TODO: Below it is necessary to implement logic for the possibility of alignment from the right or from the left.
+		//const textAnchor = "middle"; // TODO: Below it is necessary to implement logic for the possibility of alignment from the right or from the left.
 
-		let edgeXRect, edgeYRect, edgeXText, edgeYText;
+		let edgeXRect, edgeYRect, edgeXText, edgeYText, textAnchor;
 
 		if (type === "horizontal") {
 			edgeXRect = dx + ((orient === "right") ? edgeAt + 1 : edgeAt - rectWidth - 1);
 			edgeYRect = y1 - (rectHeight / 2);
-			edgeXText = dx + ((orient === "right") ? edgeAt + (rectWidth / 2) : edgeAt - (rectWidth / 2));
+			edgeXText = dx + ((orient === "right") ? edgeAt + arrowWidth : edgeAt - arrowWidth);
 			edgeYText = y1;
+			textAnchor = ((orient == "right") ? "left" : "right")
 		} else {
 			edgeXRect = x1 - (rectWidth / 2);
 			edgeYRect = (orient === "bottom") ? edgeAt : edgeAt - rectHeight;
 			edgeXText = x1;
 			edgeYText = (orient === "bottom") ? edgeAt + (rectHeight / 2) : edgeAt - (rectHeight / 2);
+			textAnchor = ((orient == "bottom") ? "top" : "bottom")
 		}
 
 		coordinateBase = {
