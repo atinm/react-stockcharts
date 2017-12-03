@@ -73,14 +73,14 @@ function helper(props) {
 		if (type === "horizontal") {
 			edgeXRect = dx + ((orient === "right") ? edgeAt + 1 : edgeAt - rectWidth - 1);
 			edgeYRect = y1 - (rectHeight / 2);
-			edgeXText = dx + ((orient === "right") ? edgeAt + arrowWidth : edgeAt - arrowWidth);
+			edgeXText = dx + ((orient === "right") ? edgeAt + arrowWidth : edgeAt - rectWidth + 1);
 			edgeYText = y1;
 			textAnchor = ((orient == "right") ? "left" : "right")
 		} else {
 			edgeXRect = x1 - (rectWidth / 2);
 			edgeYRect = (orient === "bottom") ? edgeAt : edgeAt - rectHeight;
 			edgeXText = x1;
-			edgeYText = (orient === "bottom") ? edgeAt + (rectHeight / 2) : edgeAt - (rectHeight / 2);
+			edgeYText = (orient === "bottom") ? edgeAt + (rectHeight / 2) : edgeAt - rectHeight + 1;
 			textAnchor = ((orient == "bottom") ? "top" : "bottom")
 		}
 
